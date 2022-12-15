@@ -58,7 +58,7 @@ wss.on('connection', ws => {
                     return;
                 };
                 response = JSON.stringify({
-                    action: 'sharkWin'
+                    action: 'fishWin'
                 });
                 lobby.player1.ws.send(response);
                 lobby.player2.ws.send(response);
