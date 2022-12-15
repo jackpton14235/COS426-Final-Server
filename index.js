@@ -1,12 +1,17 @@
 const Websocket = require("ws");
 const http = require("http");
 const crypto = require("crypto");
-const { disconnect } = require("process");
+const express = require("express");
 
 const PORT = 7777;
 
 const httpServer = http.createServer();
 const wss = new Websocket.Server({ server: httpServer });
+const app = express();
+
+app.get('/test', (req, res) => {
+    res.send("Hello from server!");
+})
 
 let waiting;
 const lobbies = {};
@@ -146,6 +151,8 @@ function playerScore(id, ws) {
         }))
     }
 }
+
+httpServer.on("request", app);
 
 httpServer.listen(PORT, () => {
   console.log(`Express listening on port ${PORT}`);
