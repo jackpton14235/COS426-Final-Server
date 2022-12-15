@@ -2,8 +2,9 @@ const Websocket = require("ws");
 const http = require("http");
 const crypto = require("crypto");
 const express = require("express");
+require('dotenv').config();
 
-const PORT = 7777;
+const PORT = process.env.PORT;
 
 const httpServer = http.createServer();
 const wss = new Websocket.Server({ server: httpServer });
